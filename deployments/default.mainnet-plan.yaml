@@ -1,0 +1,35 @@
+---
+id: 0
+name: Mainnet deployment
+network: mainnet
+stacks-node: "https://stacks-node-api.mainnet.stacks.co"
+bitcoin-node: "http://blockstack:blockstacksystem@bitcoin.blockstack.com:8332"
+plan:
+  batches:
+    - id: 0
+      transactions:
+        - contract-publish:
+            contract-name: mock-token-2
+            expected-sender: SPS8A81JF2FM54J0EJ6T1KVJ64CCVBEJRT3PP7FB
+            cost: 10410
+            path: contracts/mock-token.clar
+            anchor-block-only: true
+            clarity-version: 2
+      epoch: "2.5"
+    - id: 1
+      transactions:
+        - contract-publish:
+            contract-name: amm
+            expected-sender: SPS8A81JF2FM54J0EJ6T1KVJ64CCVBEJRT3PP7FB
+            cost: 180780
+            path: contracts/amm.clar
+            anchor-block-only: true
+            clarity-version: 3
+        - contract-publish:
+            contract-name: mock-token
+            expected-sender: SPS8A81JF2FM54J0EJ6T1KVJ64CCVBEJRT3PP7FB
+            cost: 10410
+            path: contracts/mock-token.clar
+            anchor-block-only: true
+            clarity-version: 3
+      epoch: "3.0"
